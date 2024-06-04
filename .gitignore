@@ -41,3 +41,4 @@ sDNA_setup*.msi
 
 build_cmake
 sDNA/sdna_vs2008/sdna_vs2008.vcxproj.user
+/sDNA/sDNA_2022/x64
