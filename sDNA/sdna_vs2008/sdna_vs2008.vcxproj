@@ -1379,7 +1379,6 @@ IF "$(Platform)"=="x64" ( copy $(TargetDir)\geos_c.dll $(ProjectDir)\..\..\outpu
     <ClCompile Include="random.cpp" />
     <ClCompile Include="sdna_geometry_collections.cpp" />
     <ClCompile Include="sDNACalculationFactory.cpp" />
-    <!-- <ClCompile Include="stdafx_force_includable.cpp" /> -->
     <ClCompile Include="stdafx.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug64|Win32'">/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug64|Win32'">Create</PrecompiledHeader>
@@ -1448,7 +1447,6 @@ IF "$(Platform)"=="x64" ( copy $(TargetDir)\geos_c.dll $(ProjectDir)\..\..\outpu
     <ClInclude Include="sdna_spatial_accumulators.h" />
     <ClInclude Include="sDNACalculationFactory.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="stdafx_force_includable.h" />
     <ClInclude Include="tables.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="unique_id.h" />
