@@ -1,10 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
 
-# set CMAKE_TOOLCHAIN_FILE in CMakePresets.json as recommended
-# https://learn.microsoft.com/en-gb/vcpkg/users/buildsystems/cmake-integration#cmake_toolchain_file
-# set(CMAKE_TOOLCHAIN_FILE
-#   ../vcpkg/scripts/buildsystems/vcpkg.cmake
-#   )
 
 # "The version of the operating system for which CMake is to build."
 # https://cmake.org/cmake/help/latest/variable/CMAKE_SYSTEM_VERSION.html
@@ -242,6 +237,8 @@ set(MuParser
 )
 source_group("MuParser" FILES ${MuParser})
 
+
+
 set(Sources
     "calc_output_code.cpp"
     "calculation.cpp"
@@ -296,6 +293,12 @@ add_library(${PROJECT_NAME} SHARED ${ALL_FILES})
 target_link_libraries(${PROJECT_NAME} PUBLIC ${Boost_LIBRARIES})
 
 target_precompile_headers(${PROJECT_NAME} PRIVATE "stdafx.h")
+
+set_source_files_properties(${MuParser} PROPERTIES SKIP_PRECOMPILE_HEADERS 1)
+
+# foreach(mu_parser_package IN LISTS ${MuParser})
+#   ${mu_parser_package} SKIP_PRECOMPILE_HEADERS
+# endforeach()
 
 use_props(${PROJECT_NAME} "${CMAKE_CONFIGURATION_TYPES}" "${DEFAULT_CXX_PROPS}")
 set(ROOT_NAMESPACE sdna_vs2008)
