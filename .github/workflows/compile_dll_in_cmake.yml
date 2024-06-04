@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
 
   push:
-    branches: [ "main", "CMake_no_R", "No_R_CMake_(Boost_1.83)"]
+    branches: [ "main", "CMake_no_R", "No_R_CMake_(Boost_1.83)", "Compiles_from_MSBuild"]
 
   pull_request:
-    branches: [ "main", "CMake_no_R" ]
+    branches: [ "main", "CMake_no_R", "Compiles_from_MSBuild" ]
 
 env:
   CONFIGURATION: Release
