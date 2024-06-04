@@ -294,7 +294,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC ${Boost_LIBRARIES})
 
 target_precompile_headers(${PROJECT_NAME} PRIVATE "stdafx.h")
 
-set_source_files_properties(${MuParser} PROPERTIES SKIP_PRECOMPILE_HEADERS 1)
+# set_source_files_properties(${MuParser} PROPERTIES SKIP_PRECOMPILE_HEADERS 1)
 
 # foreach(mu_parser_package IN LISTS ${MuParser})
 #   ${mu_parser_package} SKIP_PRECOMPILE_HEADERS
