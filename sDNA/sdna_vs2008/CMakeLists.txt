@@ -241,7 +241,6 @@ set(MuParser
     "../muparser/drop/src/muParserTokenReader.cpp"
 )
 source_group("MuParser" FILES ${MuParser})
-add_compile_definitions(DONT_INCLUDE_STDAFX_IN_MUPARSER 1)
 
 set(Sources
     "calc_output_code.cpp"
