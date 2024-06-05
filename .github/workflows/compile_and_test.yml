@@ -60,7 +60,7 @@ jobs:
           D:\a\sdna_plus\sdna_plus\vcpkg_installed\
           D:\a\sdna_plus\sdna_plus\sDNA\sdna_vs2008\vcpkg_installed\
           C:\Users\runneradmin\AppData\Local\vcpkg\
-        key: ${{ runner.os }}-${{ hashFiles('sDNA\sdna_vs2008\vcpkg.json', 'sDNA\sdna_vs2008\vcpkg-configuration.json') }}
+        key: sdna_vs2008.sln-${{ runner.os }}-${{ hashFiles('sDNA\sdna_vs2008\vcpkg.json', 'sDNA\sdna_vs2008\vcpkg-configuration.json') }}
 
 
     - name: Install Boost from vcpkg.json
