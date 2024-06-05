@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
 
   push:
-    branches: [ "main", "CMake_no_R", "No_R_CMake_(Boost_1.83)", "Compiles_from_MSBuild"]
+    branches: [ "main",  "CMake", "Compiles_from_MSBuild", "Compiles_with_CMake"]
 
   pull_request:
-    branches: [ "main", "CMake_no_R", "Compiles_from_MSBuild" ]
+    branches: [ "main",  "CMake", "Compiles_from_MSBuild", "Compiles_with_CMake"]
 
 env:
   CONFIGURATION: Release
@@ -51,7 +51,7 @@ jobs:
           D:\a\sdna_plus\sdna_plus\sDNA\sdna_vs2008\vcpkg_installed\
           C:\Users\runneradmin\AppData\Local\vcpkg\
           D:\a\sdna_plus\sdna_plus\build_cmake\vcpkg_installed
-        key: ${{ github.ref_name }}-${{ runner.os }}-${{ hashFiles('vcpkg.json', 'vcpkg-configuration.json') }}
+        key: CMake-${{ runner.os }}-${{ hashFiles('sDNA\sdna_vs2008\vcpkg.json', 'sDNA\sdna_vs2008\vcpkg-configuration.json') }}
 
 
     # - name: Install Boost etc. from vcpkg.json
