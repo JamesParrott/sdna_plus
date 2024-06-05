@@ -292,10 +292,10 @@ add_library(${PROJECT_NAME} SHARED ${ALL_FILES})
 
 target_link_libraries(${PROJECT_NAME} PUBLIC ${Boost_LIBRARIES})
 
-# target_precompile_headers(${PROJECT_NAME} PRIVATE "stdafx.h")
+target_precompile_headers(${PROJECT_NAME} PRIVATE "stdafx.h")
 
-# Uncommenting this, with the "#include stdafx.h"s in Muparser reproduces the 
-# linker error when compiling in MSBuild or VS Studio without PRecompiled headers
+# Uncommenting this, but keeping the "#include stdafx.h"s in Muparser reproduces the 
+# linker error when compiling in MSBuild or VS Studio without Precompiled headers
 # set_source_files_properties(${MuParser} PROPERTIES SKIP_PRECOMPILE_HEADERS 1)
 
 # foreach(mu_parser_package IN LISTS ${MuParser})
