@@ -1,4 +1,7 @@
 @echo off
+@REM Don't use setlocal.  Subsequent calls of 
+@REM ./run_CMake_output_build_system.bat use
+@REM the value of %BUILD_DIR% set below.
 
 set THIS_FILE_DIR=%~dp0
 set SRC_DIR=%THIS_FILE_DIR%
