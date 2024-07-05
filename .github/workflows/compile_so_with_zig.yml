@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
   push:
-    branches: [ "Cross_platform" ]
+    branches: [ "Cross_platform", "Zig_0.14_test" ]
 
   pull_request:
     branches: [ "Cross_platform" ]
@@ -37,7 +37,7 @@ jobs:
     - name: Install Zig
       uses: goto-bus-stop/setup-zig@v2
       with:
-        version: 0.13.0
+        version: 0.14.0
 
     - name: Create Ninja build system from CMake
       run: >
