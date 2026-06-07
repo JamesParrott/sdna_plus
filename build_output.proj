@@ -60,7 +60,7 @@
         />
         <Copy
              SourceFiles="@(docsandlicense)"
-             DestinationFolder="output\$(Configuration)"
+             DestinationFolder="output\$(Configuration)\"
         />
 
         <Copy SourceFiles="@(rportable)" DestinationFolder="output\$(Configuration)\rportable\%(RecursiveDir)" SkipUnchangedFiles="true" />

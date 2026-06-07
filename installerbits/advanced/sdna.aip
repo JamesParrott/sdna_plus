@@ -1647,6 +1647,7 @@
     <ROW Component="utils" ComponentId="{AF4220FE-CD92-4DC1-9EA4-C8E88FBCE59B}" Directory_="R_92_Dir" Attributes="0" KeyPath="utils" Type="0"/>
     <ROW Component="utils.dll" ComponentId="{77C7F795-6E31-4768-A0A6-6FFAB5C53B7E}" Directory_="i386_67_Dir" Attributes="0" KeyPath="utils.dll"/>
     <ROW Component="utils.dll_2" ComponentId="{AAAA28FF-6324-4944-A809-3A8D1B145270}" Directory_="x64_66_Dir" Attributes="256" KeyPath="utils.dll_2"/>
+    <ROW Component="version_generated.h" ComponentId="{CFCDDA5A-52AF-4E3E-89D7-BFD7C1BE720D}" Directory_="" Attributes="0" KeyPath="version_generated.h"Type="0"/>
     <ROW Component="winCairo.dll" ComponentId="{92DEF425-B874-405F-A17E-DA88A4768955}" Directory_="i386_41_Dir" Attributes="0" KeyPath="winCairo.dll"/>
     <ROW Component="winCairo.dll_2" ComponentId="{CBF467F4-1ABF-4201-8808-5CE67137A1D1}" Directory_="x64_41_Dir" Attributes="256" KeyPath="winCairo.dll_2"/>
     <ROW Component="windlgs.R" ComponentId="{B877CAFE-4E16-4BF9-9129-CD7DCFF63E8B}" Directory_="R_94_Dir" Attributes="0" KeyPath="windlgs.R" Type="0"/>
@@ -6944,6 +6945,7 @@
     <ROW File="Rportable.nsi" Component_="R.ico" FileName="RPORTA~1.NSI|Rportable.nsi" Attributes="0" SourcePath="..\..\output\release\rportable\R-Portable\Other\RPortable Source\Rportable.nsi" SelfReg="false"/>
     <ROW File="RPortable.exe" Component_="RPortable.exe" FileName="R-PORT~1.EXE|R-Portable.exe" Attributes="0" SourcePath="..\..\output\release\rportable\R-Portable\R-Portable.exe" SelfReg="false" DigSign="true"/>
     <ROW File="geos_c.dll" Component_="geos_c.dll" FileName="geos_c.dll" Attributes="0" SourcePath="..\..\output\release\x64\geos_c.dll" SelfReg="false"/>
+    <ROW File="version_generated.h" Component_="version_generated.h" FileName="version_generated.h" Attributes="0" SourcePath="..\..\output\release\version_generated.h" SelfReg="false"/>
     <ROW File="sdna_vs2008.dll_2" Component_="sdna_vs2008.dll_2" FileName="SDNA_V~1.DLL|sdna_vs2008.dll" Attributes="0" SourcePath="..\..\output\release\x64\sdna_vs2008.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.custcomp.MsiShortcutPropertyComponent">
@@ -7828,6 +7830,7 @@
     <ROW Feature_="MainFeature" Component_="R.ico"/>
     <ROW Feature_="MainFeature" Component_="RPortable.exe"/>
     <ROW Feature_="MainFeature" Component_="geos_c.dll"/>
+    <ROW Feature_="MainFeature" Component_="version_generated.h"/>
     <ROW Feature_="MainFeature" Component_="sdna_vs2008.dll_2"/>
     <ROW Feature_="MainFeature" Component_="APPDIR"/>
   </COMPONENT>
