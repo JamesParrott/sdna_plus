@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
 
   push:
-    branches: [ "Cross_platform",]
+    branches: [ "Cross_platform", "Fix_cross_platform_CI",]
 
   pull_request:
-    branches: [ "Cross_platform",]
+    branches: [ "Cross_platform", ]
 
 jobs:
   build_linux_wheel:
@@ -98,23 +98,23 @@ jobs:
 
     strategy:
       fail-fast: false
-      matrix:
-        python_version: ['3.12']
-        smoke_test: ["python -u debug_test.py",
-                     "python -u hybrid_test.py",
-                     "python -u 3d_test.py",
-                     "python -u partial_test.py",
-                     "python -u test_parallel_results.py",
-                     "python -u prepare_barns_test.py",
-                     'sdnalearn --calibfile tiny.shp --target MADn --vars MGLAn,MCFn --boxcoxtarget --bcregex ".*" --mode single_best_variable --output regtestout_single_py3.txt --resids regtestresids_py3.shp',
-                     'sdnalearn --calibfile tiny.shp --target MADn --vars MGLAn,MCFn --mode multiple_variables --output regtestout_multiple_py3.txt',
-                     "python -u make_od_test_shp.py",
-                     'sdnaintegral --im "net=skimtest" --om "skim=testout_od_skim_py3.csv" "radii=n;outputskim;skimzone=zone;nonetdata;metric=euclidean"',
-                     'sdnaintegral --im "net=skimtestzeroweight" --om "skim=testout_od_skimzeroweight_py3.csv" "radii=n;outputskim;skimzone=zone;nonetdata;metric=euclidean;weight=weight"',
-                     'python -u make_od_test_shp.py && sdnaintegral --im "net=odtest;tables=testodmatrix.csv" --om "net=odtestoutsparse_py3" "radii=n;odmatrix"', 
-                     'python -u make_od_test_shp.py && sdnaintegral --im "net=odtest;tables=testodmatrix-nonsparse.csv" --om "net=odtestoutnonsparse_py3" "radii=n;odmatrix" ',
-                     'sdnaprepare -i prep_crash_shapefile/shapefilepreparecrash -o prep_crash_shapefile/out_py3  "action=repair;splitlinks;isolated;nearmisses;duplicates;xytol=0.01"',
-                     "python -u prepare_test_new.py",]
+      # matrix:
+      #   python_version: ['3.12']
+      #   smoke_test: ["python -u debug_test.py",
+      #                "python -u hybrid_test.py",
+      #                "python -u 3d_test.py",
+      #                "python -u partial_test.py",
+      #                "python -u test_parallel_results.py",
+      #                "python -u prepare_barns_test.py",
+      #                'sdnalearn --calibfile tiny.shp --target MADn --vars MGLAn,MCFn --boxcoxtarget --bcregex ".*" --mode single_best_variable --output regtestout_single_py3.txt --resids regtestresids_py3.shp',
+      #                'sdnalearn --calibfile tiny.shp --target MADn --vars MGLAn,MCFn --mode multiple_variables --output regtestout_multiple_py3.txt',
+      #                "python -u make_od_test_shp.py",
+      #                'sdnaintegral --im "net=skimtest" --om "skim=testout_od_skim_py3.csv" "radii=n;outputskim;skimzone=zone;nonetdata;metric=euclidean"',
+      #                'sdnaintegral --im "net=skimtestzeroweight" --om "skim=testout_od_skimzeroweight_py3.csv" "radii=n;outputskim;skimzone=zone;nonetdata;metric=euclidean;weight=weight"',
+      #                'python -u make_od_test_shp.py && sdnaintegral --im "net=odtest;tables=testodmatrix.csv" --om "net=odtestoutsparse_py3" "radii=n;odmatrix"', 
+      #                'python -u make_od_test_shp.py && sdnaintegral --im "net=odtest;tables=testodmatrix-nonsparse.csv" --om "net=odtestoutnonsparse_py3" "radii=n;odmatrix" ',
+      #                'sdnaprepare -i prep_crash_shapefile/shapefilepreparecrash -o prep_crash_shapefile/out_py3  "action=repair;splitlinks;isolated;nearmisses;duplicates;xytol=0.01"',
+      #                "python -u prepare_test_new.py",]
 
     name: "Run smoke test. "
         
@@ -139,7 +139,8 @@ jobs:
 
     - uses: actions/setup-python@v6
       with:
-        python-version: ${{ matrix.python_version }}
+        python-version: "3.14"
+        # ${{ matrix.python_version }}
 
     - name: Download output tree built in previous job
       uses: actions/download-artifact@v6
@@ -151,9 +152,38 @@ jobs:
     - name: Install wheel
       run: python -m pip install dist/sdna_plus*.whl -r requirements/learn-predict.txt
 
-    - name: Smoke test
+    # - name: Smoke test
+    #   working-directory: ./sDNA/sdna_vs2008/tests
+    #   env:
+    #     sdnadll: ''
+    #     SDNA_INSTALLED_IN_PYTHON_ENV: 1
+    #   run: ${{ matrix.smoke_test }}
+
+    - name: Run smoke tests
       working-directory: ./sDNA/sdna_vs2008/tests
       env:
         sdnadll: ''
         SDNA_INSTALLED_IN_PYTHON_ENV: 1
-      run: ${{ matrix.smoke_test }}
+        run: |
+          items=(
+            "python -u debug_test.py"
+            "python -u hybrid_test.py"
+            "python -u 3d_test.py"
+            "python -u partial_test.py"
+            "python -u test_parallel_results.py"
+            "python -u prepare_barns_test.py"
+            'sdnalearn --calibfile tiny.shp --target MADn --vars MGLAn,MCFn --boxcoxtarget --bcregex ".*" --mode single_best_variable --output regtestout_single_py3.txt --resids regtestresids_py3.shp'
+            'sdnalearn --calibfile tiny.shp --target MADn --vars MGLAn,MCFn --mode multiple_variables --output regtestout_multiple_py3.txt'
+            "python -u make_od_test_shp.py"
+            'sdnaintegral --im "net=skimtest" --om "skim=testout_od_skim_py3.csv" "radii=n;outputskim;skimzone=zone;nonetdata;metric=euclidean"'
+            'sdnaintegral --im "net=skimtestzeroweight" --om "skim=testout_od_skimzeroweight_py3.csv" "radii=n;outputskim;skimzone=zone;nonetdata;metric=euclidean;weight=weight"'
+            'python -u make_od_test_shp.py && sdnaintegral --im "net=odtest;tables=testodmatrix.csv" --om "net=odtestoutsparse_py3" "radii=n;odmatrix"'
+            'python -u make_od_test_shp.py && sdnaintegral --im "net=odtest;tables=testodmatrix-nonsparse.csv" --om "net=odtestoutnonsparse_py3" "radii=n;odmatrix" '
+            'sdnaprepare -i prep_crash_shapefile/shapefilepreparecrash -o prep_crash_shapefile/out_py3  "action=repair;splitlinks;isolated;nearmisses;duplicates;xytol=0.01"'
+            "python -u prepare_test_new.py"
+          )
+          for item in "${items[@]}"; do
+            echo "::group::Processing $item"
+            "$item"
+            echo "::endgroup::"
+          done
