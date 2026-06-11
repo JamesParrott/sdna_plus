@@ -164,7 +164,7 @@ jobs:
       env:
         sdnadll: ''
         SDNA_INSTALLED_IN_PYTHON_ENV: 1
-        run: |
+      run: |
           items=(
             "python -u debug_test.py"
             "python -u hybrid_test.py"
