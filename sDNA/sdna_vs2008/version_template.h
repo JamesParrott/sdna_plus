@@ -2,7 +2,6 @@
 //IF THE FILENAME IS version_generated.h DON'T EDIT IT - EDIT version_template.h INSTEAD!
 
 const char *GIT_HASH = "#GITHASH#";
-const char *BUILD_DATE = __DATE__;
 
 #ifdef _DEBUG
 const char *BUILD_CONFIG="debug";
