@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
 
   push:
-    branches: [ "Cross_platform",]
+    branches: [ "Cross_platform", "Do_not_embed_datestamp_into_dll_or_so",]
 
   pull_request:
-    branches: [ "Cross_platform",]
+    branches: [ "Cross_platform", "Do_not_embed_datestamp_into_dll_or_so",]
 
 jobs:
   build_linux_wheel:

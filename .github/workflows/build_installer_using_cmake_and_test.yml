@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
 
   push:
-    branches: [ "main", "Cross_platform", ]
+    branches: [ "main", "Cross_platform", "Do_not_embed_datestamp_into_dll_or_so" ]
 
   pull_request:
-    branches: [ "main", "Cross_platform", ]
+    branches: [ "main", "Cross_platform", "Do_not_embed_datestamp_into_dll_or_so" ]
 
 
 env:
