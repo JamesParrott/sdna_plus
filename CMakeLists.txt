@@ -4,6 +4,11 @@ cmake_minimum_required(VERSION 3.29)
 # set(CMAKE_SYSTEM_VERSION 10.0 CACHE STRING "" FORCE)
 # # (i.e. Windows 10)
 
+option(DO_NOT_ERROR_ON_WARNING "Treat compiler warnings as errors" OFF)
+if (NOT DO_NOT_ERROR_ON_WARNING)
+    set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
+endif()
+
 set(CMAKE_CXX_STANDARD 14)
 if (MSVC)
     message("Configuring for Visual Studio")
@@ -14,7 +19,7 @@ endif()
 
 set(USE_ZIG OFF CACHE BOOL "Use ZigCross CMake tool chain. CC='zig c++' etc. ")
 
-IF (USE_ZIG)
+if (USE_ZIG)
     set(VCPKG_CHAINLOAD_TOOLCHAIN_FILE
     "${CMAKE_CURRENT_SOURCE_DIR}/zigcross-cmake/zig-toolchain-aarch64.cmake"
     )
