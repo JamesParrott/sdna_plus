@@ -4,6 +4,11 @@ cmake_minimum_required(VERSION 3.29)
 # set(CMAKE_SYSTEM_VERSION 10.0 CACHE STRING "" FORCE)
 # # (i.e. Windows 10)
 
+option(DO_NOT_ERROR_ON_WARNING "Treat compiler warnings as errors" OFF)
+if(DO_NOT_ERROR_ON_WARNING)
+    set(CMAKE_COMPILE_WARNING_AS_ERROR OFF)
+endif()
+
 set(CMAKE_CXX_STANDARD 14)
 if (MSVC)
     message("Configuring for Visual Studio")
