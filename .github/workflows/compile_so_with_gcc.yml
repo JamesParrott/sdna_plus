@@ -30,11 +30,6 @@ jobs:
     #   with:
     #     advinst-version: '23.8'
 
-    #     # advinst-license: ${{ secrets.ADVINST_LICENSE_KEY }}
-    #     # " advinst-license
-    #     # Advanced Installer license ID. This parameter is optional if you are using a simple project type.
-    #     # "
-
 
     - name: Install Git
       run: |
