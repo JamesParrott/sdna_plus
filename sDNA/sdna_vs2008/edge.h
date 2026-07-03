@@ -71,7 +71,6 @@ typedef vector<CandidateEdge> CandidateEdgeVector;
 typedef IteratorTypeErasure::any_iterator<TraversalEvent,random_access_iterator_tag> TraversalEventIterator;
 
 typedef vector<Point > PointVector;
-typedef IteratorTypeErasure::make_any_iterator_type<PointVector::iterator>::type PointIterator;
 
 class TraversalEventContainer : public vector<TraversalEvent >
 {
