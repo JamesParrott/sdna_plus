@@ -27,7 +27,7 @@ jobs:
     - name: Deploy Advinst
       uses: caphyon/advinst-github-action@v2.0.3
       with:
-        advinst-version: '21.8.2'
+        advinst-version: '23.8'
 
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v2

@@ -5,7 +5,7 @@
 * The MuParser .cpp files are as they are in the original repo.  
 * They are dynamically prefixed with `#include stdafx.h\n` within a custom prebuild step
 within the .vcxproj.
-* The installer from (`installerbits\advanced\sdna.aip` using Caphyon's AdvancedInstaller) contains both Win32 and x64 .dlls
+* The installer contains both Win32 and x64 .dlls (it is by `installerbits\advanced\sdna.aip`, and packaged using Caphyon's AdvancedInstaller - see `.github\workflows\build_installer_and_test.yml` for the version we use in CI).
 * `zig c++` on Windows (repackaged Clang) does not support Win32, so can only be used to
 produce an x64 output installation.
 * All an installer needs to be for Zig/Windows and Linux is a zip file of the output directory.

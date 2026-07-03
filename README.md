@@ -73,7 +73,7 @@ sudo apt-get install -y r-cran-optparse r-cran-sjstats
 
 * Microsoft Visual Studio (tested on 2022) with C++ extensions
 * Python
-* Advanced Installer.  Add the location of `AdvancedInstaller.com` either to your path (`%PATH%`) or to line 8 of `build_installer.proj`.
+* Advanced Installer.  Add the location of `AdvancedInstaller.com` either to your path (`%PATH%`) or to line 8 of `build_installer.proj`.  See `.github\workflows\build_installer_and_test.yml` for the version we use in CI.
 * Vcpkg (tested with vcpkg.exe `version 2024-04-23-d6945642ee5c3076addd1a42c331bbf4cfc97457`).  E.g. in the chosen parent dir:
    - `git clone --depth=1 https://github.com/microsoft/vcpkg/`
    - `cd vcpkg`
