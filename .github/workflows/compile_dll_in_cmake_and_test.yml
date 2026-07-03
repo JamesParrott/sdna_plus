@@ -3,12 +3,6 @@ name: "Compile with CMake, MSBuild and VS 2022 for Windows, and test"
 on:
   workflow_dispatch:
 
-  push:
-    branches: [ "CMake"]
-
-  pull_request:
-    branches: [ "CMake" ]
-
 env:
   CONFIGURATION: Release
   PLATFORM: x64
