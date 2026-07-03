@@ -3,6 +3,11 @@ cmake_minimum_required(VERSION 3.26)
 set(CMAKE_SYSTEM_VERSION 10.0 CACHE STRING "" FORCE)
 # (i.e. Windows 10)
 
+option(DO_NOT_ERROR_ON_WARNING "Do not treat compiler warnings as errors" OFF)
+if (NOT DO_NOT_ERROR_ON_WARNING)
+    set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
+endif()
+
 # I'm not sure how to set CMAKE_TOOLCHAIN_FILE in CMakePresets.json as recommended here:
 # https://learn.microsoft.com/en-gb/vcpkg/users/buildsystems/cmake-integration#cmake_toolchain_file
 set(CMAKE_TOOLCHAIN_FILE
