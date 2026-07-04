@@ -20,7 +20,7 @@ env:
 jobs:
   build_and_upload_installer:
     name: "Compile on Ubuntu with CMake & GCC"
-    runs-on: "ubuntu-24.04"
+    runs-on: "ubuntu-26.04"
     # outputs:
     #   installer_file_name: ${{ steps.output_installer_file_name.outputs.name }}
     steps:
@@ -63,7 +63,7 @@ jobs:
 
     name: "Download and run sDNA installer, and run diff tests on it. "
     
-    runs-on: "ubuntu-24.04"
+    runs-on: "ubuntu-26.04"
 
 
     steps:

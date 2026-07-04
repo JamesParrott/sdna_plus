@@ -46,8 +46,14 @@ jobs:
     - name: Install dependencies
       run: |
         apt update
-        apt install git cmake ninja-build g++ libboost-dev python3-venv python3-pip -y
+        apt install -y git cmake ninja-build g++ libboost-dev python3-venv python3-pip
     
+    - name: Update GCC to support C++23
+      if: ${{ matrix.container_image != 'ubuntu:26.04' && matrix.container_image != 'debian:trixie' }}
+      run: |
+        apt install -y g++-14
+        update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 140 --slave /usr/bin/g++ g++ /usr/bin/g++-14
+
     - name: Checkout repository
       uses: actions/checkout@v5
 

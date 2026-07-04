@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include <print>
+#include <string>
 #include "net.h"
 
 using namespace std;
@@ -141,7 +143,8 @@ public:
 
 		const char *dlsym_error = dlerror();
 		if (dlsym_error) {
-			std::cerr << "Error loading " << geos_dll_path_w << ", " << dlsym_error << std::endl;
+			std::cerr << "Error loading geos_dll_path_w, " << dlsym_error << std::endl;
+			// std::print("Error loading: {0}. dlsym_error: {1}\n", geos_dll_path_w, dlsym_error);
 			dlclose(hDLL);
 			hDLL = NULL;
 			return;
@@ -151,7 +154,18 @@ public:
 
 		if (hDLL == NULL)
 		{
-			cout << "geos_c.dll / geos_c.so not found at " << geos_dll_path_w << endl;
+			std::cerr << "Error loading geos_dll_path_w " << std::endl;
+
+			// #ifdef _WINDOWS
+			// std::wcout << "geos_c.dll / geos_c.so not found at: " <<  geos_dll_path_w;
+
+			// #else
+			// // On C++23 is stricter about sending wider strings to the narrow string cout.
+			// // geos_dll_path_w could be a wide string (containing non-ascii unicode code points).
+			// // cout << "geos_c.dll / geos_c.so not found at " << geos_dll_path_w << endl;
+			// std::print("geos_c.dll / geos_c.so not found at: {0}\n", geos_dll_path_w);
+			// #endif
+
 		}
 		else
 		{

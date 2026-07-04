@@ -2,19 +2,22 @@
   "default-registry": {
     "kind": "git",
     "repository": "https://github.com/Microsoft/vcpkg",
-    "baseline": "fc6345e114c2e2c4f9714037340ccb08326b3e8c"
+    "baseline": "d87340acc46bdeda386037b38aca30136e667e47"
   },
   "registries": [
     {
       "kind": "git",
       "repository": "https://github.com/microsoft/vcpkg",
-      "baseline": "7ef729383ab801504035a4445b6dbca18c8865c8",
+      "baseline": "d87340acc46bdeda386037b38aca30136e667e47",
       "packages": [ "boost-modular-build-helper" ]
     },
     {
       "kind": "git",
       "repository": "https://github.com/Microsoft/vcpkg",
-      "baseline": "61f610845fb206298a69f708104a51d651872877",
+      "baseline": "d87340acc46bdeda386037b38aca30136e667e47",
+      "$baseline_date": "3rd July 2026",
+      "$boost_version": "1.91.0",
+      "$last_boost_update_PR_URL": "https://github.com/microsoft/vcpkg/pull/51397",
       "packages": [ "boost*", "boost-*" ]
     }
   ]

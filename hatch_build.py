@@ -84,12 +84,14 @@ class CustomHook(BuildHookInterface):
             config_command_str,
             shell=config.shell,
             env=env,
+            check = True,
         )
 
         subprocess.run(f"""
             cmake --build {build_dir} --config {config.build_config} --parallel {os.cpu_count()}
             """.lstrip().replace('\n',''),
-            shell=config.shell
+            shell=config.shell,
+            check=True,
         )
 
 

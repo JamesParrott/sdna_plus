@@ -9,7 +9,7 @@ if (NOT DO_NOT_ERROR_ON_WARNING)
     set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 endif()
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 23)
 if (MSVC)
     message("Configuring for Visual Studio")
 else()

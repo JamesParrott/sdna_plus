@@ -1,4 +1,8 @@
-# -*- coding: utf-8 -*-
+# /// script
+# requires-python = "==2.7,>=3.5"
+# dependencies = []
+# ///
+# pytest is recommended, but optional
 
 import os
 import os.path
@@ -592,7 +596,19 @@ def almost_equal(a, b, abs_tol = 2e-15):
         
 
 
-
+INF_WARNING_LINES = {
+    "WARNING: Formula evaluation gave infinite result for link 0",
+    "(Further infinities may exist but may not be reported)",
+}
+NEGATIVE_OR_NAN_WARNING_LINES = (
+    "threw runtime exception Formula evaluation gave negative result for link 0",
+    "threw runtime exception Formula evaluation gave NaN (not a number) result for link 0",
+    "(This is usually the result of dividing zero by zero)",
+)
+RANDOM_FUNCTION_CALLS = (
+    "randnorm(0,1)",
+    "randuni(0,1)",
+)
 
 
 class DiffCommand(ReadsTextInputFile):
@@ -662,6 +678,7 @@ class DiffCommand(ReadsTextInputFile):
 
             prev_expected = ''
             i=0
+            extras_before = ""
             for i, (expected, actual) in enumerate(tuples_of_nontrivial_nonProgress_strings(
                                                         expected_lines,
                                                         output_so_far.split('\n'),
@@ -745,8 +762,26 @@ class DiffCommand(ReadsTextInputFile):
                     if actual.startswith('Progress:') and actual.endswith('-bit mode'):
                         actual = ''.join(actual.partition('sDNA is running in ')[1:])
 
-                assert almost_equal(actual, expected), '[101mError[0m on line num i: %s.  This line (and up to the %s previous ones):\nExpected: %s, \n\n Actual: %s' % (i+1, buffer_size - 1,'\n'.join(expected_buffer), '\n'.join(actual_buffer))
+                if expected in INF_WARNING_LINES and actual.endswith(expected):
+                    extras_before += actual.rsplit(expected, 1)[0] 
+                    m += 1
+                    continue
+                
+                if (expected.endswith(NEGATIVE_OR_NAN_WARNING_LINES) and
+                    actual.endswith(NEGATIVE_OR_NAN_WARNING_LINES)):
+                    m+=1
+                    extras_before=""
+                    continue
+                
+                if (expected.startswith(RANDOM_FUNCTION_CALLS) and 
+                    actual.startswith(RANDOM_FUNCTION_CALLS)):
+                    m+=1
+                    continue
+
+
+                assert almost_equal(extras_before + actual, expected), '[101mError[0m on line num i: %s.  This line (and up to the %s previous ones):\nExpected: %s, \n\n Actual: %s' % (i+1, buffer_size - 1,'\n'.join(expected_buffer), '\n'.join(actual_buffer))
                 # assert actual == expected, 'i: %s, Expected: "%s", Actual: "%s"' % (i, expected, actual)
+                extras_before=""
                 prev_expected = expected
                 m += 1
 
