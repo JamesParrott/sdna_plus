@@ -182,6 +182,9 @@ void HybridMetricEvaluator::set_buffer_pointers()
 	parser.DefineVar("fwd",&geometry_variables[GVAR_FWD]);
 	parser.DefineConst("inf",numeric_limits<float>::infinity());
 	parser.DefineConst("pi",(float)M_PI);
+	// Don't optimise randnorm and randuni, or calls to them
+	// with constants in the unit tests will be 'cached'
+	// by MuParser's folding optimiser. 
 	parser.DefineFun("randnorm",&randnorm,false);
 	parser.DefineFun("randuni",&randuni,false);
 	parser.DefineFun("proportion",&safedivide,true);
@@ -194,6 +197,9 @@ void HybridMetricEvaluator::set_buffer_pointers()
 	junction_parser.DefineVar("ang",&junction_turn_angle_variable);
 	junction_parser.DefineConst("inf",numeric_limits<float>::infinity());
 	junction_parser.DefineConst("pi",(float)M_PI);
+	// Optimising randnorm and randuni, produces 
+	// i) different pseudo random output to the regression tests
+	// ii) the same 'random' output for each call (passed constants).
 	junction_parser.DefineFun("randnorm",&randnorm,false);
 	junction_parser.DefineFun("randuni",&randuni,false);
 	junction_parser.DefineFun("proportion",&safedivide,true);
