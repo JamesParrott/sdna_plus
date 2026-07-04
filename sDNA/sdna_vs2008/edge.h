@@ -3,6 +3,7 @@
 
 #include "unique_id.h"
 #include "point.h"
+#include <iterator>
 
 using namespace boost;
 using namespace std;
@@ -68,7 +69,7 @@ struct OutgoingConnection;
 typedef vector<OutgoingConnection > OutgoingConnectionVector;
 struct CandidateEdge;
 typedef vector<CandidateEdge> CandidateEdgeVector;
-typedef IteratorTypeErasure::any_iterator<TraversalEvent,random_access_iterator_tag> TraversalEventIterator;
+typedef Iterator<TraversalEvent,random_access_iterator_tag> TraversalEventIterator;
 
 typedef vector<Point > PointVector;
 
