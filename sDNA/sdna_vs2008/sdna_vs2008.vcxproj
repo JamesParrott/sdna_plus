@@ -438,6 +438,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <Outputs>$(OutDir)geos_c.dll;%(Outputs)</Outputs>
     </CustomBuildStep>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\muparser\drop\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -479,6 +480,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\muparser\drop\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -518,6 +520,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <Outputs>$(OutDir)geos_c.dll;%(Outputs)</Outputs>
     </CustomBuildStep>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -566,6 +569,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -611,6 +615,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <Outputs>$(OutDir)geos_c.dll;%(Outputs)</Outputs>
     </CustomBuildStep>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -659,6 +664,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -704,6 +710,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <Outputs>$(OutDir)geos_c.dll;%(Outputs)</Outputs>
     </CustomBuildStep>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -753,6 +760,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -799,6 +807,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <Outputs>$(OutDir)geos_c.dll;%(Outputs)</Outputs>
     </CustomBuildStep>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -846,6 +855,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -891,6 +901,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <Outputs>$(OutDir)geos_c.dll;%(Outputs)</Outputs>
     </CustomBuildStep>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -938,6 +949,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -982,6 +994,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <Outputs>$(OutDir)geos_c.dll;%(Outputs)</Outputs>
     </CustomBuildStep>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\muparser\drop\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -1023,6 +1036,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\muparser\drop\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -1061,6 +1075,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <Outputs>$(OutDir)geos_c.dll;%(Outputs)</Outputs>
     </CustomBuildStep>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -1103,6 +1118,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -1142,6 +1158,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <Outputs>$(OutDir)geos_c.dll;%(Outputs)</Outputs>
     </CustomBuildStep>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -1190,6 +1207,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -1235,6 +1253,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <Outputs>$(OutDir)geos_c.dll;%(Outputs)</Outputs>
     </CustomBuildStep>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\muparser\drop\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -1276,6 +1295,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\muparser\drop\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -1314,6 +1334,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <Outputs>$(OutDir)geos_c.dll;%(Outputs)</Outputs>
     </CustomBuildStep>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\muparser\drop\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -1355,6 +1376,7 @@ python preppend_muparser_cpps_with_include_stdafx.h.py</Command>
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalOptions>/Zm140 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\muparser\drop\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

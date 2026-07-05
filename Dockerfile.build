@@ -1,4 +1,4 @@
-# Based on CentOS 5
+# Based on Alma Linux
 FROM quay.io/pypa/manylinux_2_28_x86_64
 
 LABEL name="sDNA Linux Python Wheel Builder"
