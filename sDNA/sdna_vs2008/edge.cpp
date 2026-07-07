@@ -655,6 +655,14 @@ TraversalEventAccumulator TraversalEventContainer::partial_cost_from_iterators_i
 	return PartialEdge(range,partial_length,this,direction).full_cost();
 }
 
+template<std::vector<TraversalEvent>::iterator> 
+TraversalEventAccumulator TraversalEventContainer::partial_cost_from_iterators_ignoring_oneway(
+	Range<std::vector<TraversalEvent>::iterator>, float, polarity);
+
+template<std::vector<TraversalEvent>::reverse_iterator>
+TraversalEventAccumulator TraversalEventContainer::partial_cost_from_iterators_ignoring_oneway(
+    Range<std::vector<TraversalEvent>::reverse_iterator>, float, polarity);
+
 void TraversalEventContainer::simplify()
 {
 	//erase any centre 
