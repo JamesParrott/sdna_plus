@@ -68,9 +68,16 @@ struct OutgoingConnection;
 typedef vector<OutgoingConnection > OutgoingConnectionVector;
 struct CandidateEdge;
 typedef vector<CandidateEdge> CandidateEdgeVector;
-typedef IteratorTypeErasure::any_iterator<TraversalEvent,random_access_iterator_tag> TraversalEventIterator;
-
 typedef vector<Point > PointVector;
+// typedef IteratorTypeErasure::any_iterator<TraversalEvent,random_access_iterator_tag> TraversalEventIterator;
+
+
+template<typename It>
+struct Range {
+    It b, e;
+    It begin() const { return b; }
+    It end() const { return e; }
+};
 
 class TraversalEventContainer : public vector<TraversalEvent >
 {
@@ -102,21 +109,18 @@ protected:
 	//used to store physical location of centre if and only if it doesn't fall on an existing point in the network
 	Point extra_centre_point;
 	
-	TraversalEventContainer::iterator centre_located_on_event;
 	bool has_centre;
 	traversal_event_type centre_type;
 
 public:
+	TraversalEventContainer::iterator centre_located_on_event;
 	traversal_event_type get_centre_type() {return centre_type;}
-
-	TraversalEventIterator begin(polarity direction);
-	TraversalEventIterator centre(polarity direction);
-	TraversalEventIterator end(polarity direction);
 
 
 	TraversalEventContainer() : has_centre(false) {}
 
-	TraversalEventAccumulator partial_cost_from_iterators_ignoring_oneway(TraversalEventIterator start, TraversalEventIterator end, float partial_length, polarity direction) ;
+	template <typename TraversalEventIterator>
+	TraversalEventAccumulator partial_cost_from_iterators_ignoring_oneway(Range<TraversalEventIterator> range, float partial_length, polarity direction) ;
 	
 	void print();
 	void add_centre(traversal_event_type mtype);
@@ -153,12 +157,25 @@ public:
 	void push_back(const value_type& t) { TraversalEventContainer::push_back(t); mark_cache_invalid(); }
 };
 
+struct PartialEdgeSpecializationsDebugControls {
+	#ifdef _SDNADEBUG
+		static bool debug;
+		static void debug_on() {debug=true;}
+		static void debug_off() {debug=false;}
+	#else
+		const static bool debug = false;
+		static void debug_on() {}
+		static void debug_off() {}
+	#endif
+};
+
+template<typename TraversalEventIterator>
 class PartialEdge
 {
 private:
 	TraversalEventContainer * const parent_traversal_event_vector;
 	//for now, the iterators may be type erased reverse iterators so will naturally run the right way
-	TraversalEventIterator next, end;
+	Range<TraversalEventIterator> range;
 	polarity direction; 
 	float remaining_length;
 	bool valid;
@@ -166,18 +183,14 @@ private:
 	Point end_point_storage; //somewhere to put endpoints that don't exist already
 
 	//the real logic for cutting links resides here:
-	TraversalEvent next_event();
 	TraversalEvent next_event_inner();
-	bool has_more_events() {return next!=end || has_endpoint_left_to_emit;}
+	TraversalEvent next_event();
+	bool has_more_events() {return range.b!=range.e || has_endpoint_left_to_emit;}
 	void printinternal();
-	#ifdef _SDNADEBUG
-		static bool debug;
-	#else
-		const static bool debug = false;
-	#endif
+
 
 public:
-	PartialEdge(TraversalEventIterator from, TraversalEventIterator to, float partial_length, 
+	PartialEdge(Range<TraversalEventIterator> range, float partial_length, 
 		TraversalEventContainer * const parent_traversal_event_vector, polarity direction);
 
 	//PartialEdges are very disposable.  
@@ -187,13 +200,7 @@ public:
 	void add_points_to_geometry(BoostLineString3d &geom);
 	void print() { PartialEdge copy(*this); copy.printinternal();}
 
-	#ifdef _SDNADEBUG
-		static void debug_on() {debug=true;}
-		static void debug_off() {debug=false;}
-	#else
-		static void debug_on() {}
-		static void debug_off() {}
-	#endif
+
 };
 
 //point_index_t, for indexing points in edges,
@@ -261,10 +268,18 @@ struct Edge : public IndexedObject<EdgeId> // the algorithm edge structure
 		id = EdgeId(id_in);
 	}
 
+	Range<std::vector<TraversalEvent>::iterator> fwd_range_all() const; 
+	Range<std::vector<TraversalEvent>::reverse_iterator> rev_range_all() const;
+	Range<std::vector<TraversalEvent>::iterator> fwd_half_range_from_centre() const; 
+	Range<std::vector<TraversalEvent>::reverse_iterator> rev_half_range_from_centre() const; 
+
 private:
-	TraversalEventIterator traversal_events_begin() const;
-	TraversalEventIterator traversal_events_end() const;
-	TraversalEventIterator traversal_events_centre() const;
+	// TraversalEventIterator traversal_events_begin() const;
+	// TraversalEventIterator traversal_events_end() const;
+	// TraversalEventIterator traversal_events_centre() const;
+	PartialEdge<std::vector<TraversalEvent>::iterator> forward_partial_edge(float length, bool start_at_centre = false) const;
+	PartialEdge<std::vector<TraversalEvent>::reverse_iterator> reverse_partial_edge(float length, bool start_at_centre = false) const;
+	TraversalEventContainer temporary_container(float length, bool start_at_centre = false) const;
 
 	void get_outgoing_connections(CandidateEdgeVector &options,double cost_to_date,double remaining_radius,
 		MetricEvaluator* anal_evaluator,MetricEvaluator* radial_evaluator,edge_position from,
