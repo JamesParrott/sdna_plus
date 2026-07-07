@@ -654,7 +654,14 @@ TraversalEventAccumulator TraversalEventContainer::partial_cost_from_iterators_i
 {
 	return PartialEdge(range,partial_length,this,direction).full_cost();
 }
+// Force emission regardless of implicit-instantiation quirks at call sites:
+template TraversalEventAccumulator TraversalEventContainer::partial_cost_from_iterators_ignoring_oneway
+    std::vector<TraversalEvent>::iterator>(
+        Range<std::vector<TraversalEvent>::iterator>, float, polarity);
 
+template TraversalEventAccumulator TraversalEventContainer::partial_cost_from_iterators_ignoring_oneway
+    std::vector<TraversalEvent>::reverse_iterator>(
+        Range<std::vector<TraversalEvent>::reverse_iterator>, float, polarity);
 
 void TraversalEventContainer::simplify()
 {
