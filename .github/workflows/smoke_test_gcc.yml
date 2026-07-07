@@ -1,13 +1,13 @@
 name: "Smoke test (GCC)."
 
 on:
-  # push:
-  #   branches-ignore:
-  #     - main**
+  push:
+    branches-ignore:
+      - main**
 
-  # pull_request:
-  #   branches-ignore:
-  #     - main**
+  pull_request:
+    branches-ignore:
+      - main**
   workflow_dispatch:
 
 
