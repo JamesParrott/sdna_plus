@@ -206,6 +206,27 @@ public:
 };
 
 // Implement here to emit both specializations
+#ifdef _SDNADEBUG
+	bool PartialEdgeSpecializationsDebugControls::debug = false;
+#endif
+
+template<typename TraversalEventIterator>
+PartialEdge<TraversalEventIterator>::PartialEdge(Range<TraversalEventIterator> range, float partial_length, 
+						 TraversalEventContainer* const parent_traversal_event_vector,polarity direction)
+	: range(range), remaining_length(partial_length), valid(true), has_endpoint_left_to_emit(false),
+	parent_traversal_event_vector(parent_traversal_event_vector), direction(direction)
+{
+	assert(range.b->physical_location()!=NULL);
+	assert(from != to); // so we get startpoints and endpoints
+
+	if (PartialEdgeSpecializationsDebugControls::debug)
+		cout << "partial edge called length=" << partial_length << " ";
+
+	//ensure no points whatsoever come out (not even start/endpoints) if partial length is negative
+	if (partial_length < 0)
+		range.b = range.e;
+}
+
 template <typename TraversalEventIterator>
 TraversalEventAccumulator TraversalEventContainer::partial_cost_from_iterators_ignoring_oneway(
 	Range<TraversalEventIterator> range, 

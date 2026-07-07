@@ -864,27 +864,6 @@ void CachedTraversalEventContainer::give_centre_to_zero_length_tev()
 // Can either give full cost or convert to a TraversalEventContainer for adding centre           
 /////////////////////////////////////////////////////////////
 
-#ifdef _SDNADEBUG
-	bool PartialEdgeSpecializationsDebugControls::debug = false;
-#endif
-
-template<typename TraversalEventIterator>
-PartialEdge<TraversalEventIterator>::PartialEdge(Range<TraversalEventIterator> range, float partial_length, 
-						 TraversalEventContainer* const parent_traversal_event_vector,polarity direction)
-	: range(range), remaining_length(partial_length), valid(true), has_endpoint_left_to_emit(false),
-	parent_traversal_event_vector(parent_traversal_event_vector), direction(direction)
-{
-	assert(range.b->physical_location()!=NULL);
-	assert(from != to); // so we get startpoints and endpoints
-
-	if (PartialEdgeSpecializationsDebugControls::debug)
-		cout << "partial edge called length=" << partial_length << " ";
-
-	//ensure no points whatsoever come out (not even start/endpoints) if partial length is negative
-	if (partial_length < 0)
-		range.b = range.e;
-}
-
 
 template<typename TraversalEventIterator>
 TraversalEvent PartialEdge<TraversalEventIterator>::next_event_inner()
