@@ -362,22 +362,22 @@ void Edge::get_outgoing_connections(CandidateEdgeVector &output,double cost_to_d
 }
 
 Range<std::vector<TraversalEvent>::iterator> Edge::fwd_range_all() const {
-	return Range(link->traversal_events.begin(), link->traversal_events.end());
+	return Range{link->traversal_events.begin(), link->traversal_events.end()};
 }
 
 Range<std::vector<TraversalEvent>::reverse_iterator> Edge::rev_range_all() const {
-	return Range(link->traversal_events.rbegin(), link->traversal_events.rend());
+	return Range{link->traversal_events.rbegin(), link->traversal_events.rend()};
 }
 
 Range<std::vector<TraversalEvent>::iterator> Edge::fwd_half_range_from_centre() const {
-	return Range(link->traversal_events.centre_located_on_event, link->traversal_events.end());
+	return Range{link->traversal_events.centre_located_on_event, link->traversal_events.end()};
 }
 
 
 Range<std::vector<TraversalEvent>::reverse_iterator> Edge::rev_half_range_from_centre() const {
-	return Range(std::reverse_iterator<TraversalEventContainer::iterator>(link->traversal_events.centre_located_on_event+1),
+	return Range{std::reverse_iterator<TraversalEventContainer::iterator>(link->traversal_events.centre_located_on_event+1),
 	             link->traversal_events.rend()
-	);
+	};
 }
 
 
@@ -629,21 +629,21 @@ bool Edge::traversal_allowed() const
 
 TraversalEventAccumulator TraversalEventContainer::full_cost_ignoring_oneway(polarity direction) 
 {
-	return partial_cost_from_iterators_ignoring_oneway(Range(begin(), end()),
+	return partial_cost_from_iterators_ignoring_oneway(Range{begin(), end()},
 										numeric_limits<float>::infinity(),direction);
 }
 
 TraversalEventAccumulator TraversalEventContainer::get_start_traversal_cost_ignoring_oneway(polarity direction)
 {
 	assert(has_centre);
-	return partial_cost_from_iterators_ignoring_oneway(Range(begin(), centre_located_on_event),
+	return partial_cost_from_iterators_ignoring_oneway(Range{begin(), centre_located_on_event},
 										numeric_limits<float>::infinity(),direction);
 }
 
 TraversalEventAccumulator TraversalEventContainer::get_end_traversal_cost_ignoring_oneway(polarity direction)
 {
 	assert(has_centre);
-	return partial_cost_from_iterators_ignoring_oneway(Range(centre_located_on_event, end()),
+	return partial_cost_from_iterators_ignoring_oneway(Range{centre_located_on_event, end()},
 											numeric_limits<float>::infinity(),direction);
 }
 
@@ -654,14 +654,6 @@ TraversalEventAccumulator TraversalEventContainer::partial_cost_from_iterators_i
 {
 	return PartialEdge(range,partial_length,this,direction).full_cost();
 }
-// Force emission regardless of implicit-instantiation quirks at call sites:
-template TraversalEventAccumulator TraversalEventContainer::partial_cost_from_iterators_ignoring_oneway
-    std::vector<TraversalEvent>::iterator>(
-        Range<std::vector<TraversalEvent>::iterator>, float, polarity);
-
-template TraversalEventAccumulator TraversalEventContainer::partial_cost_from_iterators_ignoring_oneway
-    std::vector<TraversalEvent>::reverse_iterator>(
-        Range<std::vector<TraversalEvent>::reverse_iterator>, float, polarity);
 
 void TraversalEventContainer::simplify()
 {
