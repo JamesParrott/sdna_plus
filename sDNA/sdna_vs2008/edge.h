@@ -137,6 +137,8 @@ public:
 	virtual TraversalEventAccumulator get_end_traversal_cost_ignoring_oneway(polarity direction);    //ditto (also see the subclass methods below)
 };
 
+
+
 class CachedTraversalEventContainer : public TraversalEventContainer
 {
 private:
@@ -202,6 +204,15 @@ public:
 
 
 };
+
+// Implement here to emit both specializations
+template <typename TraversalEventIterator>
+TraversalEventAccumulator TraversalEventContainer::partial_cost_from_iterators_ignoring_oneway(
+	Range<TraversalEventIterator> range, 
+	float partial_length, polarity direction) 
+{
+	return PartialEdge(range,partial_length,this,direction).full_cost();
+}
 
 //point_index_t, for indexing points in edges,
 //is a signed version of size_t

@@ -647,13 +647,7 @@ TraversalEventAccumulator TraversalEventContainer::get_end_traversal_cost_ignori
 											numeric_limits<float>::infinity(),direction);
 }
 
-template <typename TraversalEventIterator>
-TraversalEventAccumulator TraversalEventContainer::partial_cost_from_iterators_ignoring_oneway(
-	Range<TraversalEventIterator> range, 
-	float partial_length, polarity direction) 
-{
-	return PartialEdge(range,partial_length,this,direction).full_cost();
-}
+
 
 void TraversalEventContainer::simplify()
 {
