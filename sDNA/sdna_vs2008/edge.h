@@ -120,7 +120,7 @@ public:
 	TraversalEventContainer() : has_centre(false) {}
 
 	template <typename TraversalEventIterator>
-	TraversalEventAccumulator partial_cost_from_iterators_ignoring_oneway(Range<TraversalEventIterator> range, float partial_length, polarity direction) ;
+	TraversalEventAccumulator partial_cost_from_iterators_ignoring_oneway(Range<TraversalEventIterator> range, float partial_length, polarity direction);
 	
 	void print();
 	void add_centre(traversal_event_type mtype);
