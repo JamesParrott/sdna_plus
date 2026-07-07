@@ -1,13 +1,13 @@
 name: Quick build GCC Linux, linked to system libraries
 
 on:
-  # push:
-  #   branches-ignore:
-  #     - main**
+  push:
+    branches-ignore:
+      - main**
 
-  # pull_request:
-  #   branches-ignore:
-  #     - main**
+  pull_request:
+    branches-ignore:
+      - main**
   workflow_dispatch:  
 jobs:
   build:
