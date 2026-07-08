@@ -972,6 +972,7 @@ elseif(WIN32) # E.g. zig c++ for Windows
         "_UNICODE"
     )
 else() # Not MSVC
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${CMAKE_DL_LIBS})
     find_package(OpenMP)
     if(OpenMP_CXX_FOUND)
         target_compile_options(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_FLAGS})

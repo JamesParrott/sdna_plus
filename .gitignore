@@ -67,3 +67,4 @@ wheels/
 *.whl
 *.zip
 *.tar.gz
+/sdna_plus-cppcheck-build-dir
