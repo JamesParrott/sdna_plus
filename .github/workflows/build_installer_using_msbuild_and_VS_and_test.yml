@@ -2,13 +2,13 @@ name: "MSBuild, VS 2022, & Windows.  Build installer and test it."
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches-ignore:
-  #     - main**
+  push:
+    branches-ignore:
+      - main**
 
-  # pull_request:
-  #   branches-ignore:
-  #     - main**
+  pull_request:
+    branches-ignore:
+      - main**
 
 env:
   CONFIGURATION: Release

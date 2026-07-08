@@ -2,13 +2,13 @@ name: Build a Linux Wheel and test it.
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches-ignore:
-  #     - main**
+  push:
+    branches-ignore:
+      - main**
 
-  # pull_request:
-  #   branches-ignore:
-  #     - main**
+  pull_request:
+    branches-ignore:
+      - main**
 
 permissions:
   contents: read
